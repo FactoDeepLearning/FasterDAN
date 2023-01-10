@@ -1,0 +1,12 @@
+**/Datasets/raw
+**/Datasets/formatted
+**/Fonts
+**/outputs
+**/__pycache__
+*.pyc
+*.png
+*.pdf
+*.mp4
+**/Results
+.idea
+**/*.egg-info
