@@ -4,11 +4,11 @@ This repository is a public implementation of the paper: "Faster DAN: Paralleliz
 The paper is available at TO COMPLETE.
 
 Click to see the demo:
+
 [![Click to see demo](https://img.youtube.com/vi/_pBsO2W8XRE/0.jpg)](https://youtu.be/_pBsO2W8XRE?list=PLW90lu1l3ue9a2I9i0CLZM_orlnxoxv3g)
 
 Pretrained model weights are available [here](https://git.litislab.fr/dcoquenet/fasterdan) 
 
-[//]: # (and [here](https://zenodo.org/record/)
 
 Table of contents:
 1. [Getting Started](#Getting-Started)
