@@ -139,7 +139,7 @@ if __name__ == "__main__":
             "pe_h_max": 500,  # maximum height for encoder output (for 2D positional embedding)
             "pe_w_max": 1000,  # maximum width for encoder output (for 2D positional embedding)
             "l_max": 15000,  # max predicted sequence (for 1D positional embedding)
-            "enc_size": 256,
+            "enc_size": 256,  # encoder model dim
             "dec_num_layers": 8,  # number of transformer decoder layers
             "dec_num_heads": 4,  # number of heads in transformer decoder layers
             "dec_res_dropout": 0.1,  # dropout in transformer decoder layers
@@ -147,7 +147,6 @@ if __name__ == "__main__":
             "dec_att_dropout": 0.1,  # dropout rate in multi head attention
             "dec_dim_feedforward": 256,  # number of dimension for feedforward layer in transformer decoder layers
             "attention_win": 100,  # length of attention window
-            "use_tokens_from_all_lines": True,
             "two_step_pos_enc_mode": "cat",  # ["cat" / "add"]
             # Curriculum dropout
             "dropout_scheduler": {

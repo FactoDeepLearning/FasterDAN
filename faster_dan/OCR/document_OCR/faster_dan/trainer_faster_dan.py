@@ -122,7 +122,7 @@ class Manager(DANManager):
                                                                   padding_value=self.dataset.tokens["pad"])
             first_pass_mask = torch.logical_and(line_indices == 0, y != self.dataset.tokens["pad"])
             second_pass_mask = torch.logical_and(line_indices != 0, y != self.dataset.tokens["pad"])
-            sum_loss += (self.params["model_params"]["first_pass_factor"] * loss_ce(pred.permute(0, 2, 1)[first_pass_mask], y[first_pass_mask]) + loss_ce(pred.permute(0, 2, 1)[second_pass_mask], y[second_pass_mask])) / (torch.sum(second_pass_mask)+torch.sum(first_pass_mask))
+            sum_loss += (loss_ce(pred.permute(0, 2, 1)[first_pass_mask], y[first_pass_mask]) + loss_ce(pred.permute(0, 2, 1)[second_pass_mask], y[second_pass_mask])) / (torch.sum(second_pass_mask)+torch.sum(first_pass_mask))
 
             predicted_tokens = torch.argmax(pred, dim=1).detach().cpu().numpy()
             predicted_tokens = [predicted_tokens[i, :token_len[i]] for i in range(b)]

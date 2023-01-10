@@ -152,10 +152,11 @@ if __name__ == "__main__":
             "dec_pred_dropout": 0.1,  # dropout rate before decision layer
             "dec_att_dropout": 0.1,  # dropout rate in multi head attention
             "dec_dim_feedforward": 256,  # number of dimension for feedforward layer in transformer decoder layers
-            "attention_win": 100,  # length of attention window
-            "use_tokens_from_all_lines": True,
+            "attention_win": 100,  # num of previous characters per line to keep as query (100~all)
+            "use_tokens_from_all_lines": True,  # use previous characters from all the other text lines
+            "use_first_pass_tokens": True,  # use first character of all the other text lines + layout tokens
+            "use_line_indices": True,  # use line positional encoding scheme
             "two_step_pos_enc_mode": "cat",  # ["cat" / "add"]
-            "first_pass_factor": 1,
             # Curriculum dropout
             "dropout_scheduler": {
                 "function": exponential_dropout_scheduler,

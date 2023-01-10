@@ -3,7 +3,7 @@ from torch import relu
 from torch.nn import Conv1d, Dropout
 from torch.nn import Embedding
 from torch.nn import Module
-from faster_dan.OCR.document_OCR.faster_dan.models_dan import FeaturesUpdater, GlobalAttDecoder, PositionalEncoding1DOnTheFly
+from faster_dan.OCR.document_OCR.faster_dan.models_dan import FeaturesUpdater, GlobalAttDecoder, PositionalEncoding1DOnTheFly, PositionalEncoding1D
 
 
 class GlobalHTADecoder(Module):
@@ -24,10 +24,14 @@ class GlobalHTADecoder(Module):
 
         self.emb = Embedding(num_embeddings=params["vocab_size"]+3, embedding_dim=self.enc_dim)
 
-        if params["two_step_pos_enc_mode"] == "add":
-            self.pe_1d = PositionalEncoding1DOnTheFly(self.enc_dim, params["device"])
+        self.use_line_indices = params["use_line_indices"] if "use_line_indices" in params else True
+        if self.use_line_indices:
+            if params["two_step_pos_enc_mode"] == "add":
+                self.pe_1d = PositionalEncoding1DOnTheFly(self.enc_dim, params["device"])
+            else:
+                self.pe_1d = PositionalEncoding1DOnTheFly(self.enc_dim//2, params["device"])
         else:
-            self.pe_1d = PositionalEncoding1DOnTheFly(self.enc_dim//2, params["device"])
+            self.pe_1d = PositionalEncoding1D(self.enc_dim, self.dec_l_max, params["device"])
 
         vocab_size = params["vocab_size"] + 1
         self.end_conv = Conv1d(self.enc_dim, vocab_size, kernel_size=1)
@@ -39,10 +43,13 @@ class GlobalHTADecoder(Module):
         emb_tokens = self.emb(tokens).permute(0, 2, 1)
         # Add 1D Positional Encoding
 
-        if self.params["two_step_pos_enc_mode"] == "cat":
-            pos_tokens = emb_tokens + torch.cat([self.pe_1d(line_indices), self.pe_1d(index_in_lines)], dim=1)
+        if self.use_line_indices:
+            if self.params["two_step_pos_enc_mode"] == "cat":
+                pos_tokens = emb_tokens + torch.cat([self.pe_1d(line_indices), self.pe_1d(index_in_lines)], dim=1)
+            else:
+                pos_tokens = emb_tokens + self.pe_1d(line_indices) + self.pe_1d(index_in_lines)
         else:
-            pos_tokens = emb_tokens + self.pe_1d(line_indices) + self.pe_1d(index_in_lines)
+            pos_tokens = self.pe_1d(emb_tokens, start=start)
 
         pos_tokens = pos_tokens.permute(2, 0, 1)
 
@@ -127,6 +134,10 @@ class GlobalHTADecoder(Module):
             index_visible = torch.logical_and(torch.logical_or(index_visible, line_indices.unsqueeze(1) ==0), torch.logical_not(torch.logical_and(line_indices.unsqueeze(1) ==0, index_in_lines.unsqueeze(1) == 0)))
             index_visible = torch.logical_not(index_visible)
             mask[index_second_pass] = index_visible[index_second_pass]
+            if "use_first_pass_tokens" in self.params and not self.params["use_first_pass_tokens"]:
+                first_pass_length = torch.sum(line_indices == 0, dim=1)
+                for b in range(batch_size):
+                    mask[b, first_pass_length[b]:, :first_pass_length[b]] = True
             return mask
         else:
             batch_size = line_indices.size(0)
@@ -139,4 +150,6 @@ class GlobalHTADecoder(Module):
                 for i in range(num_lines):
                     mask[:, num_lines+i::num_lines, num_lines+i::num_lines] = True
                 mask[:, num_lines:, num_lines:] = torch.logical_and(mask[:, num_lines:, num_lines:], torch.tril(torch.ones((target_len-num_lines, target_len-num_lines), dtype=torch.bool, device=device), diagonal=0))
+            if "use_first_pass_tokens" in self.params and not self.params["use_first_pass_tokens"]:
+                mask[:, num_lines:, :num_lines] = False
             return torch.logical_not(mask)
