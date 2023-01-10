@@ -18,8 +18,8 @@ class DatasetFormatter:
         self.dataset_name = dataset_name
         self.level = level
         self.set_names = set_names
-        self.source_fold_path = os.path.join("../raw", dataset_name)
-        self.target_fold_path = os.path.join("../formatted", "{}_{}{}".format(dataset_name, level, extra_name))
+        self.source_fold_path = os.path.join("./Datasets/raw", dataset_name)
+        self.target_fold_path = os.path.join("./Datasets/formatted", "{}_{}{}".format(dataset_name, level, extra_name))
         self.map_datasets_files = dict()
         self.temp_fold = None
         self.extract_with_dirname = False

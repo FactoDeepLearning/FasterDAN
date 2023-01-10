@@ -194,6 +194,7 @@ if __name__ == "__main__":
     }
 
     syn_config = params["dataset_params"]["config"]["synthetic_data"]
+    # Start evaluation on validation after curriculum phase
     params["training_params"]["start_valid_from_steps"] = syn_config["curr_start"] + syn_config["curr_step"] * (syn_config["max_nb_lines"]-syn_config["min_nb_lines"])
 
     train_and_test(0, params)

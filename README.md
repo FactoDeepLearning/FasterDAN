@@ -32,6 +32,7 @@ conda create --name fdan
 conda activate fdan
 cd FasterDAN
 pip install -e .
+cd faster_dan
 ```
 
 
@@ -51,7 +52,7 @@ Raw dataset files must be placed in Datasets/raw/{dataset_name} \
 where dataset name is "READ 2016", "RIMES" or "Maurdor".
 
 ## Training And Evaluation
-### Step 1: Download the dataset
+### Step 1: Download the datasets and place the raw files in the following folder: Datasets/raw/{dataset_name}
 
 ### Step 2: Format the dataset
 ```
@@ -64,8 +65,9 @@ python3 Datasets/dataset_formatters/maurdor_formatter.py
 
 ### Step 4 : Generate synthetic line dataset and pretrain on it
 ```
-python3 OCR/line_OCR/ctc/main_syn_line.py # generation
-python3 OCR/line_OCR/ctc/main_line_ctc_syn.py # training
+cd OCR/line_OCR/ctc/
+python3 main_syn_line.py # generation
+python3 main_line_ctc_syn.py # training
 ```
 There are two lines in this script to adapt to the used dataset:
 ```
@@ -77,8 +79,9 @@ Weights and evaluation results are stored in OCR/line_OCR/ctc/outputs
 
 ### Step 6 : Training the Faster DAN / DAN
 ```
-python3 OCR/document_OCR/faster_dan/main_faster_dan.py  # faster dan
-python3 OCR/document_OCR/faster_dan/main_std_dan.py  # original dan
+cd OCR/document_OCR/faster_dan/
+python3 main_faster_dan.py  # faster dan
+python3 main_std_dan.py  # original dan
 ```
 
 

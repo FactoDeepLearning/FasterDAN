@@ -35,7 +35,7 @@ class RIMESDatasetFormatter(OCRDatasetFormatter):
     def __init__(self, level, set_names=["train", "valid", "test"], dpi=150, sem_token=False, order_sem=False):
         super(RIMESDatasetFormatter, self).__init__("RIMES", level, "_sem" if sem_token else "", set_names)
 
-        self.source_fold_path = os.path.join("../raw", "RIMES" if level!= "word" else "RIMES_word")
+        self.source_fold_path = os.path.join("./Datasets/raw", "RIMES" if level!= "word" else "RIMES_word")
         self.dpi = dpi
         self.sem_token = sem_token
         self.map_datasets_files.update({

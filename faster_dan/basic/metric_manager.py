@@ -281,7 +281,7 @@ def compute_layout_AP_for_given_threshold(gt_list, pred_list, threshold):
     """
     remaining_gt_list = gt_list.copy()
     num_true = len(gt_list)
-    correct = np.zeros((len(pred_list)), dtype=np.bool)
+    correct = np.zeros((len(pred_list)), dtype=np.bool_)
     for i, pred in enumerate(pred_list):
         if len(remaining_gt_list) == 0:
             break
@@ -290,8 +290,8 @@ def compute_layout_AP_for_given_threshold(gt_list, pred_list, threshold):
         if cer <= threshold:
             correct[i] = True
             del remaining_gt_list[ind]
-    precision = np.cumsum(correct, dtype=np.int) / np.arange(1, len(pred_list)+1)
-    recall = np.cumsum(correct, dtype=np.int) / num_true
+    precision = np.cumsum(correct, dtype=np.int32) / np.arange(1, len(pred_list)+1)
+    recall = np.cumsum(correct, dtype=np.int32) / num_true
     max_precision_from_recall = np.maximum.accumulate(precision[::-1])[::-1]
     recall_diff = (recall - np.concatenate([np.array([0, ]), recall[:-1]]))
     P = np.sum(recall_diff * max_precision_from_recall)

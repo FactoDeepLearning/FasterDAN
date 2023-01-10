@@ -537,5 +537,6 @@ if __name__ == "__main__":
 
     # READ2016DatasetFormatter("line").format()
     # READ2016DatasetFormatter("paragraph").format()
+    READ2016DatasetFormatter("page", end_token=True, sem_token=False).format()
     READ2016DatasetFormatter("page", end_token=True, sem_token=True).format()
     READ2016DatasetFormatter("double_page", sem_token=True, end_token=True).format()

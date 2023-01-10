@@ -44,7 +44,7 @@ def main():
             "dataset_manager": OCRDatasetManager,
             "dataset_class": OCRDataset,
             "datasets": {
-                dataset_name: "../../../Datasets/formatted/{}_{}".format(dataset_name, dataset_level),
+                dataset_name: "Datasets/formatted/{}_{}".format(dataset_name, dataset_level),
             },
             "train": {
                 "name": "{}-train".format(dataset_name),

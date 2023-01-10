@@ -28,7 +28,7 @@ class MaurdorDatasetFormatter(OCRDatasetFormatter):
         self.categories = categories
         self.languages = languages
         output_name = self.dataset_name if custom_name is None else custom_name
-        self.target_fold_path = os.path.join("../formatted", "{}_{}".format(output_name, level))
+        self.target_fold_path = os.path.join("./Datasets/formatted", "{}_{}".format(output_name, level))
         self.polygon_as_rect = False
         self.extract_with_dirname = True
         self.orientation = orientation
