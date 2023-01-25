@@ -1,11 +1,12 @@
-# Faster DAN: Parallelizing End-to-end Handwritten Document Recognition with Line Positional Encoding
-This repository is a public implementation of the paper: "Faster DAN: Parallelizing End-to-end Handwritten Document Recognition with Line Positional Encoding".
+# Faster DAN: Multi-target Queries with Document Positional Encoding for End-to-end Handwritten Document Recognition
+This repository is a public implementation of the paper: "Faster DAN: Multi-target Queries with Document Positional Encoding for End-to-end Handwritten Document Recognition".
 
 The paper is available at TO COMPLETE.
 
 Click to see the demo:
 
-[![Click to see demo](https://img.youtube.com/vi/_pBsO2W8XRE/0.jpg)](https://youtu.be/_pBsO2W8XRE?list=PLW90lu1l3ue9a2I9i0CLZM_orlnxoxv3g)
+[![Click to see demo](https://img.youtube.com/vi/fbLGhGN7ocg/0.jpg)](https://youtu.be/fbLGhGN7ocg?list=PLW90lu1l3ue9a2I9i0CLZM_orlnxoxv3g)
+
 
 Pretrained model weights are available [here](https://git.litislab.fr/dcoquenet/fasterdan) 
 
@@ -100,7 +101,7 @@ The outputs files are split into two subfolders: "checkpoints" and "results". \
 ```bibtex
 @misc{Coquenet2022b,
   author = {Coquenet, Denis and Chatelain, Clément and Paquet, Thierry},
-  title = {Faster DAN: Parallelizing End-to-end Handwritten Document Recognition with Line Positional Encoding},
+  title = {Faster DAN: Multi-target Queries with Document Positional Encoding for End-to-end Handwritten Document Recognition},
   year = {2023},
 }
 ```
