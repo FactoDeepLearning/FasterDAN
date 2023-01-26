@@ -1,14 +1,14 @@
 # Faster DAN: Multi-target Queries with Document Positional Encoding for End-to-end Handwritten Document Recognition
 This repository is a public implementation of the paper: "Faster DAN: Multi-target Queries with Document Positional Encoding for End-to-end Handwritten Document Recognition".
 
-The paper is available at TO COMPLETE.
+The paper is available on [Arxiv](https://arxiv.org/abs/2301.10593).
 
 Click to see the demo:
 
 [![Click to see demo](https://img.youtube.com/vi/fbLGhGN7ocg/0.jpg)](https://youtu.be/fbLGhGN7ocg?list=PLW90lu1l3ue9a2I9i0CLZM_orlnxoxv3g)
 
 
-Pretrained model weights are available [here](https://git.litislab.fr/dcoquenet/fasterdan) 
+Pretrained model weights are available [here](https://git.litislab.fr/dcoquenet/fasterdan) and [here](https://zenodo.org/record/7568900#.Y9Iz_hyZPbY)
 
 
 Table of contents:
@@ -103,6 +103,9 @@ The outputs files are split into two subfolders: "checkpoints" and "results". \
   author = {Coquenet, Denis and Chatelain, Clément and Paquet, Thierry},
   title = {Faster DAN: Multi-target Queries with Document Positional Encoding for End-to-end Handwritten Document Recognition},
   year = {2023},
+  doi = {10.48550/ARXIV.2301.10593},
+  url = {https://arxiv.org/abs/2301.10593},
+  publisher = {arXiv},
 }
 ```
 
