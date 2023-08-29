@@ -99,13 +99,16 @@ The outputs files are split into two subfolders: "checkpoints" and "results". \
 ## Citation
 
 ```bibtex
-@misc{Coquenet2022b,
+@inproceedings{Coquenet2023fasterdan,
   author = {Coquenet, Denis and Chatelain, Clément and Paquet, Thierry},
   title = {Faster DAN: Multi-target Queries with Document Positional Encoding for End-to-end Handwritten Document Recognition},
-  year = {2023},
-  doi = {10.48550/ARXIV.2301.10593},
-  url = {https://arxiv.org/abs/2301.10593},
-  publisher = {arXiv},
+  booktitle={International Conference on Document Analysis and Recognition (ICDAR)},
+  year={2023},
+  pages={182--199},
+  series={Lecture Notes in Computer Science},
+  volume={14190},
+  doi={10.1007/978-3-031-41685-9_12},
+  url={https://arxiv.org/abs/2301.10593},
 }
 ```
 
