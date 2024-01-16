@@ -42,7 +42,7 @@ We used three datasets in the paper: RIMES 2009, READ 2016 and MAURDOR.
 
 RIMES dataset at page level was distributed during the [evaluation compaign of 2009](https://ieeexplore.ieee.org/document/5277557).
 
-The MAURDOR dataset was distributed during the [evaluation compaign of 2013](https://ieeexplore.ieee.org/document/6854572)
+The MAURDOR dataset was distributed during the [evaluation compaign of 2013](https://ieeexplore.ieee.org/document/6854572). It is now available [here](https://catalogue.elra.info/en-us/repository/browse/ELRA-E0045/). 
 
 READ 2016 dataset corresponds to the one used in the [ICFHR 2016 competition on handwritten text recognition](https://ieeexplore.ieee.org/document/7814136).
 It can be found [here](https://zenodo.org/record/1164045#.YiINkBvjKEA)
