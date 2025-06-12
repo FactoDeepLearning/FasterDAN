@@ -1,5 +1,8 @@
 # Faster DAN: Multi-target Queries with Document Positional Encoding for End-to-end Handwritten Document Recognition
-This repository is a public implementation of the paper: "Faster DAN: Multi-target Queries with Document Positional Encoding for End-to-end Handwritten Document Recognition".
+
+**This project is under <u>CeCILL-C license</u>** (full details in LICENSE_CECILL-C.md).
+
+This repository is a public implementation of the paper: "Faster DAN: Multi-target Queries with Document Positional Encoding for End-to-end Handwritten Document Recognition", International Conference on Document Analysis and Recognition, 2023.
 
 The paper is available on [Arxiv](https://arxiv.org/abs/2301.10593).
 
@@ -112,3 +115,7 @@ The outputs files are split into two subfolders: "checkpoints" and "results". \
 }
 ```
 
+
+## License
+
+This project is under CeCILL-C license.
